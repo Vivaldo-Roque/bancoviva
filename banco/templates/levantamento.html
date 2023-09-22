@@ -1,0 +1,33 @@
+{% extends "esqueleto.html" %}
+
+{% block titulo %}
+<title>Levantamento</title>
+{% endblock %}
+
+{% block content %}
+
+<div style="margin-top: 9rem; width: 100%" class="position-absolute top-0 start-50 translate-middle">
+    <p class="text-center"><strong class="h4">Saldo actual: {{ conta.saldo|floatformat:2 }} KZ</strong></p>
+</div>
+
+<div class="row w-75 mx-auto position-absolute top-50 start-50 translate-middle">
+    <div class="col justify-content-center">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="row mx-auto justify-content-center w-75">
+                <div class="col">
+                    <label for="montante" class="form-label">Montante</label>
+                    <input type="number" name="montante" class="form-control" id="montante">
+                    <div class="row my-2">
+                        <button type="submit" class="btn btn-primary">Levantar</button>
+                    </div>
+                    <div class="row mt-1">
+                        <button type="button" class="btn btn-danger" onclick="location.href=`{% url 'inicio' %}`">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

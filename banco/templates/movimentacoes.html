@@ -1,0 +1,53 @@
+{% extends 'esqueleto.html' %}
+
+{% block titulo %}
+  <title>Movimentações</title>
+{% endblock %}
+
+{% block content %}
+  <div class="row w-75 mx-auto position-absolute top-50 start-50 translate-middle">
+    <div class="col justify-content-center">
+      <p class="text-center h4 mb-5">Historico movimentação</p>
+
+      <div class="table-responsive">
+        <table class="table w-75 mx-auto">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Montante</th>
+              <th scope="col">operacao</th>
+              <th scope="col">Hora</th>
+              <th scope="col">Data</th>
+            </tr>
+          </thead>
+          {% if movimentacoes %}
+            <tbody>
+              {% for movimentacao in movimentacoes %}
+                <tr>
+                  <th scope="row">{{ movimentacao.movimentacao_id }}</th>
+                  {% if movimentacao.operacao.operacao_id == 1 %}
+                    <td>➕ {{movimentacao.montante}}</td>
+                  {% elif movimentacao.operacao.operacao_id == 2 %}
+                    <td>➖ {{movimentacao.montante}}</td>
+                  {% endif %}
+                  <td>{{ movimentacao.operacao.descricao }}</td>
+                  <td>{{ movimentacao.data_hora|time:'H:i' }}</td>
+                  <td>{{ movimentacao.data_hora|date:'d-m-Y' }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          {% endif %}
+        </table>
+        {% if not movimentacoes %}
+            <p class="text-center">Sem movimentações disponiveis</p>
+        {% endif %}
+      </div>
+
+      <p class="text-center h4 my-5">Saldo actual: {{ conta.saldo|floatformat:2 }} KZ</p>
+
+      <div class="row w-25 mx-auto">
+        <button type="button" class="btn btn-danger mx-auto" onclick="location.href=`{% url 'inicio' %}`">Voltar</button>
+      </div>
+    </div>
+  </div>
+{% endblock %}

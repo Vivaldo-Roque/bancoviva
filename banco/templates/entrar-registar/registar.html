@@ -1,0 +1,71 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Banco Viva | Entrar</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <link href="{% static 'css/entrar-registar.css' %}" rel="stylesheet">
+</head>
+
+<body class="text-center">
+
+    {% include 'alertas.html' %}
+
+    <main class="form-signin">
+        <form action="" method="POST">
+
+            {% csrf_token %}
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="72" height="52" fill="currentColor" class="bi bi-bank2 mb-4" viewBox="0 0 16 16">
+                <path d="M8.277.084a.5.5 0 0 0-.554 0l-7.5 5A.5.5 0 0 0 .5 6h1.875v7H1.5a.5.5 0 0 0 0 1h13a.5.5 0 1 0 0-1h-.875V6H15.5a.5.5 0 0 0 .277-.916l-7.5-5zM12.375 6v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zM8 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM.5 15a.5.5 0 0 0 0 1h15a.5.5 0 1 0 0-1H.5z" />
+            </svg>
+            <h1 class="h3 mb-3 fw-normal">Banco Viva</h1>
+
+            <div class="form-floating my-1">
+                <input type="text" name="primeiro_nome" class="form-control" id="floatingFirstName" placeholder="Primeiro nome">
+                <label for="floatingFirstName">Primeiro nome</label>
+            </div>
+            <div class="form-floating my-1">
+                <input type="text" name="ultimo_nome" class="form-control" id="floatingLastName" placeholder="Ultimo nome">
+                <label for="floatingLastName">Ultimo nome</label>
+            </div>
+            <div class="form-floating my-1">
+                <input type="text" name="telefone" class="form-control" id="floatingPhone" placeholder="Telefone">
+                <label for="floatingPhone">Telefone</label>
+            </div>
+            <div class="form-floating my-1">
+                <input type="text" name="morada" class="form-control" id="floatingAddress" placeholder="Morada">
+                <label for="floatingAddress">Morada</label>
+            </div>
+            <div class="form-floating my-1">
+                <input type="email" name="email" class="form-control" id="floatingInput" placeholder="nome@gmail.com">
+                <label for="floatingInput">E-mail</label>
+            </div>
+            <div class="form-floating my-1">
+                <input type="password" name="senha" class="form-control" id="floatingPassword" placeholder="Senha">
+                <label for="floatingPassword">Senha</label>
+            </div>
+            <div class="form-floating my-1">
+                <input type="password" name="csenha" class="form-control" id="floatingCPassword" placeholder="Confirmar senha">
+                <label for="floatingCPassword">Confirmar senha</label>
+            </div>
+
+            <a class="text-decoration-none mt-2" href="{% url 'entrar' %}">Entrar</a>
+
+            <button class="mt-2 w-100 btn btn-lg btn-primary" type="submit">Criar conta</button>
+        </form>
+    </main>
+
+    <script src="{% static 'js/form-avoid-resubmission.js' %}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

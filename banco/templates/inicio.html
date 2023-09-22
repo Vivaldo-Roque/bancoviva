@@ -1,0 +1,38 @@
+{% extends "esqueleto.html" %}
+
+{% block titulo %}
+<title>Inicio</title>
+{% endblock %}
+
+{% block content %}
+<div style="margin-top: 9rem; width: 100%" class="position-absolute top-0 start-50 translate-middle">
+    <p class="text-center"><strong class="h4">Saldo actual: {{ conta.saldo|floatformat:2 }} KZ
+        </strong></p>
+</div>
+
+<div class="row w-75 mx-auto position-absolute top-50 start-50 translate-middle">
+    <div class="col justify-content-center">
+        <div class="row py-3">
+            <button type="button" class="btn btn-primary" onclick="location.href=`{% url 'deposito' %}`">Depositar</button>
+        </div>
+        <div class="row py-3">
+            <button type="button" class="btn btn-primary" onclick="location.href=`{% url 'levantamento' %}`">Levantar</button>
+        </div>
+        <div class="row py-3">
+            <button type="button" class="btn btn-primary" onclick="location.href=`{% url 'perfil' %}`">Editar dados
+                pessoais</button>
+        </div>
+        <div class="row py-3">
+            <button type="button" class="btn btn-primary" onclick="location.href=`{% url 'historico_movimentacoes' %}`">Historico
+                movimentações</button>
+        </div>
+        <div class="row py-3">
+            <form action="{% url 'eliminar_conta' %}" method="post" class="m-0 p-0">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-danger w-100" name="eliminar_conta" value="Eliminar conta" />
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
