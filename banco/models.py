@@ -3,10 +3,10 @@ from django.contrib.auth.models import User
 
 class Perfil(models.Model):
     usuario = models.OneToOneField(User, models.CASCADE, primary_key=True)
-    primeiro_nome = models.CharField(max_length=50)
-    ultimo_nome = models.CharField(max_length=50)
-    telefone = models.CharField(max_length=50)
-    morada = models.CharField(max_length=50)
+    primeiro_nome = models.CharField(max_length=50, blank=False)
+    ultimo_nome = models.CharField(max_length=50, blank=False)
+    telefone = models.CharField(max_length=50, blank=False)
+    morada = models.CharField(max_length=50, blank=False)
 
     class Meta:
         managed = True
@@ -16,7 +16,7 @@ class Perfil(models.Model):
 class Conta(models.Model):
     conta_id = models.AutoField(primary_key=True)
     usuario = models.OneToOneField(User, models.CASCADE)
-    saldo = models.FloatField()
+    saldo = models.FloatField(default=0)
 
     class Meta:
         managed = True
@@ -60,9 +60,9 @@ class Operacao(models.Model):
 class Movimentacao(models.Model):
     movimentacao_id = models.AutoField(primary_key=True)
     conta = models.ForeignKey('Conta', models.CASCADE)
-    montante = models.FloatField()
-    operacao = models.ForeignKey('Operacao', models.CASCADE)
-    data_hora = models.DateTimeField(auto_now_add=True)
+    montante = models.FloatField(blank=False)
+    operacao = models.ForeignKey('Operacao', models.CASCADE, blank=False)
+    data_hora = models.DateTimeField(auto_now_add=True, blank=False)
 
     class Meta:
         managed = True

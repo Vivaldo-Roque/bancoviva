@@ -1,7 +1,7 @@
 {% extends 'esqueleto.html' %}
 
 {% block titulo %}
-  <title>Dados cliente</title>
+  <title>Banco Viva | Dados cliente</title>
 {% endblock %}
 
 {% block content %}
@@ -11,29 +11,59 @@
       <form action="" method="post">
         {% csrf_token %}
         <div class="col justify-content-center">
-          <div class="row mt-5 mb-3">
-            <label for="primeiro_nome" class="form-label">Primeiro nome</label>
-            <input type="text" name="primeiro_nome" class="form-control" id="primeiro_nome" value="{{ usuario.perfil.primeiro_nome }}" />
+          <div class="form-floating my-1">
+            {{ form.primeiro_nome }}
+            <label class="form-label" for="floatingFirstName">Primeiro nome</label>
+            {% if form.errors.primeiro_nome %}
+              <div class="invalid-feedback d-block text-start">{{ form.errors.primeiro_nome|striptags }}</div>
+            {% else %}
+              <div class="valid-feedback {{ feedback }} text-start">Parece bom!</div>
+            {% endif %}
           </div>
-          <div class="row mb-3">
-            <label for="ultimo" class="form-label">Ultimo nome</label>
-            <input type="text" name="ultimo_nome" class="form-control" id="ultimo" value="{{ usuario.perfil.ultimo_nome }}" />
+          <div class="form-floating my-1">
+            {{ form.ultimo_nome }}
+            <label class="form-label" for="floatingLastName">Ultimo nome</label>
+            {% if form.errors.ultimo_nome %}
+              <div class="invalid-feedback d-block text-start">{{ form.errors.ultimo_nome|striptags }}</div>
+            {% else %}
+              <div class="valid-feedback {{ feedback }} text-start">Parece bom!</div>
+            {% endif %}
           </div>
-          <div class="row mb-3">
-            <label for="telefone" class="form-label">Telefone</label>
-            <input type="text" name="telefone" class="form-control" id="telefone" value="{{ usuario.perfil.telefone }}" />
+          <div class="form-floating my-1">
+            {{ form.telefone }}
+            <label class="form-label" for="floatingPhone">Telefone</label>
+            {% if form.errors.telefone %}
+              <div class="invalid-feedback d-block text-start">{{ form.errors.telefone|striptags }}</div>
+            {% else %}
+              <div class="valid-feedback {{ feedback }} text-start">Parece bom!</div>
+            {% endif %}
           </div>
-          <div class="row mb-3">
-            <label for="morada" class="form-label">Morada</label>
-            <input type="text" name="morada" class="form-control" id="morada" value="{{ usuario.perfil.morada }}" />
+          <div class="form-floating my-1">
+            {{ form.morada }}
+            <label class="form-label" for="floatingAddress">Morada</label>
+            {% if form.errors.morada %}
+              <div class="invalid-feedback d-block text-start">{{ form.errors.morada|striptags }}</div>
+            {% else %}
+              <div class="valid-feedback {{ feedback }} text-start">Parece bom!</div>
+            {% endif %}
           </div>
-          <div class="row mb-3">
-            <label for="senha" class="form-label">Senha</label>
-            <input type="text" name="senha" class="form-control" id="senha" value="" />
+          <div class="form-floating my-1">
+            {{ form.password }}
+            <label class="form-label" for="floatingPassword">Senha</label>
+            {% if form.errors.password %}
+              <div class="invalid-feedback d-block text-start">{{ form.errors.password|striptags }}</div>
+            {% else %}
+              <div class="valid-feedback {{ feedback }} text-start">Parece bom!</div>
+            {% endif %}
           </div>
-          <div class="row mb-3">
-            <label for="csenha" class="form-label">Confirmar senha</label>
-            <input type="text" name="csenha" class="form-control" id="csenha" value="" />
+          <div class="form-floating my-1">
+            {{ form.confirm_password }}
+            <label class="form-label" for="floatingCPassword">Confirmar senha</label>
+            {% if form.errors.confirm_password %}
+              <div class="invalid-feedback d-block text-start">{{ form.errors.confirm_password|striptags }}</div>
+            {% else %}
+              <div class="valid-feedback {{ feedback }} text-start">Parece bom!</div>
+            {% endif %}
           </div>
           <div class="row text-center mt-5 mb-5">
             <div class="col col-sm-6 text-end">
