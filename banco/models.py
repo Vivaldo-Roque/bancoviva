@@ -35,7 +35,7 @@ class Conta(models.Model):
             return False
     
     def levantar(self, valor: float):
-        if self.saldo >= valor:
+        if self.saldo >= valor and valor > 0:
             self.saldo -= valor
             self.save()
             operacao = Operacao.objects.get(operacao_id=2)

@@ -1,11 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-from banco.models import Perfil, Conta, Movimentacao
-from django.contrib.auth import authenticate, login, logout
+from banco.models import Conta, Movimentacao
+from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
 from django.contrib import messages
-from django.contrib.auth import update_session_auth_hash
 from banco.forms import SignUpForm, SignInForm, UserDataForm
 
 # Create your views here.
@@ -50,7 +48,7 @@ def withdraw(request):
             return HttpResponseRedirect('/inicio/')
         else:
             messages.warning(
-                request, "Não digite um valor superior ao que tem na conta!")
+                request, "Não digite zero, um valor negativo ou superior ao que tem na conta!")
             return HttpResponseRedirect('/levantamento/')
 
 @login_required

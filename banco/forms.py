@@ -6,10 +6,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
-import re
 
 # signup form
-
 
 class SignUpForm(ModelForm):
     class Meta:
