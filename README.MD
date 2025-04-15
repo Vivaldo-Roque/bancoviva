@@ -1,61 +1,132 @@
-Estive estudando Django e achei bem legal, tentei fazer um sistema que engloba o CRUD (Create-Read-Update-Delete), é um sistema que simula uma conta bancária simples.
+# 💰 Banco Viva – Django Project
 
-Pode testar aqui => https://bancoviva.vercel.app/
+Hello! This is a simple project built using the **Django** framework. It simulates a **bank account** system with basic **CRUD** operations (Create, Read, Update, Delete). I built it as part of my learning journey, and I'm sharing here what I’ve learned during the process.
 
-O que pude aprender:
+🔗 **Test the live app**: [https://bancoviva.vercel.app/](https://bancoviva.vercel.app/)
 
-* O que é Django, e como ele simplifica o desenvolvimento.
+---
 
-* Django faz uso da arquitetura MVT (Moddel-View-Template).
+## 🚀 What I learned from Django
 
-* A diferença entre um projeto e app no Django.
+While working on this project, I explored many of Django’s features. Here are some key things I learned:
 
-* Django traz uma ORM facilitando gerênciamento do banco de dados (criacão de tabelas, relações, CRUD, migrações,  etc).
+- ✅ **What Django is** and how it simplifies web development with built-in tools.
+- 🧱 Understanding the **MVT** architecture (Model-View-Template).
+- 🧩 The difference between a **project** and an **app** in Django.
+- 🛠️ How Django’s **ORM (Object-Relational Mapping)** works:
+  - Creating tables and relationships.
+  - Running migrations.
+  - Performing CRUD operations through models.
+- 🧬 Reusing **templates** via template inheritance.
+- 🏷️ Using **template tags and filters**.
+- 📄 Handling **HTML Forms** with Django:
+  - Built-in validation.
+  - Field and type customization.
+  - Saving directly to the database.
+- 🔐 Built-in **user authentication** system.
+- 🌐 Defining **routes/URLs** with clarity and flexibility.
 
-* Django tem uma maneira interessante de se reaproveitar os templates em outros templates.
+---
 
-* Utilizar algumas tags e filtros dos templates.
+## 🛠️ Installation & Local Setup
 
-* Django tem um mecanismo para ajudar a lidar com HTML Forms, permitindo fazer a validação, customizar os campos e o tipo de dados, salvar direitamente para o banco de dados, etc.
+### ✅ Requirements
 
-* Quanto a autenticação de usuário, Django traz um sistema de autenticação embutido.
+- Python 3.10+
+- pip
+- virtualenv (optional, but recommended)
 
-* Django traz um mecânismo para definir rotas.
+### 📥 Clone the repository
 
-Para fazer o deploy do projeto na Vercel tive que seguir alguns passos:
-* https://www.makeuseof.com/django-app-vercel-host-free/
-* https://devmaesters.com/blog/15
+```bash
+git clone https://github.com/your-username/banco-viva.git
+cd banco-viva
+```
 
-instalação:
+### 📦 Install dependencies
 
+```bash
 pip install -r requirements.txt
+```
 
-Comandos uteis:
+### ⚙️ Run migrations
 
-criar novo projeto django
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+### 👤 Create superuser (optional)
+
+```bash
+python manage.py createsuperuser
+```
+
+### ▶️ Start local server
+
+```bash
+python manage.py runserver
+```
+
+Open in your browser: `http://127.0.0.1:8000/`
+
+---
+
+## 🧰 Useful commands
+
+```bash
+# Create a new Django project
 django-admin startproject myprojectname
 
-criar um novo app para o projeto
-py manage.py startapp myappname
+# Create a new app inside the project
+python manage.py startapp myappname
 
-Criar modelos de uma base de dados já existente:
-py manage.py inspectdb > models.py
-py manage.py makemigrations myappname
-py manage.py migrate myappname --fake-initial
+# Generate models from an existing database
+python manage.py inspectdb > models.py
 
-Criar usuario adminstrador
-py manage.py createsuperuser
+# Create and apply migrations
+python manage.py makemigrations myappname
+python manage.py migrate myappname
 
-Resetar migrações
-manage.py migrate --fake myappname zero
+# Reset migrations (forced)
+python manage.py migrate myappname zero --fake
 
-criar migração
-python manage.py makemigrations myappname --name mymigrationname --empty
-py manage.py makemigrations myappname
-py manage.py migrate
+# Create an empty migration with a custom name
+python manage.py makemigrations myappname --name migration_name --empty
 
-Iniciar o projeto
-py manage.py runserver
+# Open Django interactive shell
+python manage.py shell
+```
 
-Linha de comando interativa:
-py manage.py shell
+---
+
+## 🌐 Deploying to Vercel
+
+This project was deployed to [Vercel](https://vercel.com/), which allows Python apps to be hosted with a few configuration tweaks.
+
+### 🔧 Steps followed:
+
+1. Create a Vercel account.
+2. Push the project code to a GitHub repository.
+3. Connect the repo to Vercel and create a new project.
+4. Set environment variables like `DJANGO_SECRET_KEY`, `DEBUG`, etc.
+5. Adjust the `settings.py` and add a `vercel.json` file if needed.
+
+### 📚 Helpful deployment guides:
+
+- [How to Host a Django App on Vercel for Free](https://www.makeuseof.com/django-app-vercel-host-free/)
+- [Deploy Django on Vercel - DevMaesters](https://devmaesters.com/blog/15)
+
+---
+
+## 📬 Contributions & Feedback
+
+This project was built as part of my learning journey, so **any feedback is welcome**!  
+If you'd like to contribute, feel free to open an **issue** or submit a **pull request**.
+
+---
+
+## 🙌 Thanks!
+
+Thanks for stopping by!  
+I hope this project helps you understand Django better through a hands-on example. 😄
